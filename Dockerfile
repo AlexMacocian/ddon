@@ -7,6 +7,4 @@ EXPOSE 52100
 COPY start.sh /start.sh
 COPY install.sh /install.sh
 
-WORKDIR "/ddon"
-
 ENTRYPOINT ["./start.sh"]
