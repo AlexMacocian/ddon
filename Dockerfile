@@ -4,7 +4,10 @@ EXPOSE 52099
 EXPOSE 52000
 EXPOSE 52100
 
-COPY start.sh /start.sh
-COPY install.sh /install.sh
+COPY start.sh start.sh
+COPY install.sh install.sh
+
+RUN chmod +x start.sh && \
+    chmod +x install.sh
 
 ENTRYPOINT ["./start.sh"]
