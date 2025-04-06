@@ -4,7 +4,7 @@ response=$(curl -s "https://api.github.com/repos/sebastian-heinz/Arrowgene.Drago
 
 # Extract the tag name and download URL using jq
 tag_name=$(echo "$response" | jq -r '.tag_name')
-download_url=$(echo "$response" | jq -r '.assets[] | select(.name == "linux-x64-*") | .browser_download_url')
+download_url=$(echo "$response" | jq -r '.assets[] | select(.name | test("^linux-x64-.*\\.tar\\.gz$")) | .browser_download_url')
 
 if [ -n "$download_url" ]; then
     echo "Downloading linux-x64.tar.gz from the latest release..."
