@@ -1,0 +1,29 @@
+x-common-base-config: &common-base-config
+  build: .
+  environment: 
+    - TZ=Europe/London
+  volumes:
+    - type: bind
+      source: CHANGE_ME
+      target: /ddon
+      bind:
+        create_host_path: true
+  network_mode: bridge
+  
+x-common-config: &common-config
+  <<: *common-base-config
+
+services:
+  install:
+    <<: *common-config
+    tty: true
+    stdin_open: true
+    entrypoint: ./install.sh
+  server:
+    <<: *common-base-config
+    ports:
+      # 52099 http/download. 52000 tcp/gameserver. 52100 tcp/loginserver
+      - '52000:52000/tcp'
+      - '52099:52099/tcp'
+      - '52100:52100/tcp'
+    restart: unless-stopped
