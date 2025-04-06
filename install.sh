@@ -14,7 +14,7 @@ if [ -n "$download_url" ]; then
     mkdir -p /ddon/server
 
     echo "Extracting linux-static.tar.gz ..."
-    tar -xzf /tmp/linux-x64.tar.gz -C /ddon/server
+    tar -xjf /tmp/linux-x64.tar.gz -C /ddon/server
 
     echo "Cleaning up downloaded file..."
     rm /tmp/linux-x64.tar.gz

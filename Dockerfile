@@ -5,7 +5,7 @@ EXPOSE 52000
 EXPOSE 52100
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl jq && \
+    apt-get install -y --no-install-recommends curl jq bzip2 && \
     rm -rf /var/lib/apt/lists/*
 
 COPY start.sh start.sh
